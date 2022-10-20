@@ -467,8 +467,20 @@ namespace MiNET.Worlds
 
 		public Profiler _profiler = new Profiler();
 
+		private DateTime oldTick = DateTime.Now;
+		private DateTime Tick = DateTime.Now;
+		public TimeSpan MSPT = TimeSpan.FromMilliseconds(50);
+		public double TPS = 20;
+
 		private void WorldTick(object sender)
 		{
+			if (TickTime % 20 == 0)
+			{
+				oldTick = Tick;
+				Tick = DateTime.Now;
+				MSPT = TimeSpan.FromTicks((Tick.Ticks - oldTick.Ticks) / 20);
+				TPS = MSPT.TotalMilliseconds / 50 * 20;
+			}
 			//if (_tickTimer.ElapsedMilliseconds < 40 && LastTickProcessingTime < 50)
 			//{
 			//	if (Log.IsDebugEnabled) Log.Warn($"World tick came too fast: {_tickTimer.ElapsedMilliseconds} ms");
