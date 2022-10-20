@@ -59,7 +59,6 @@ namespace MiNET.Console
 			XmlConfigurator.Configure(logRepository, new FileInfo(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "log4net.xml")));
 
 			Log.Info(MiNetServer.MiNET);
-			System.Console.WriteLine(MiNetServer.MiNET);
 
 			var currentProcess = Process.GetCurrentProcess();
 			currentProcess.ProcessorAffinity = (IntPtr) Config.GetProperty("ProcessorAffinity", (int) currentProcess.ProcessorAffinity);

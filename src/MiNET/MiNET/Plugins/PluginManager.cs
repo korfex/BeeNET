@@ -190,7 +190,7 @@ namespace MiNET.Plugins
 			LoadCommands(type);
 			Commands = GenerateCommandSet(_pluginCommands.Keys.ToArray());
 			LoadPacketHandlers(type);
-			Log.Debug($"Loaded plugin {type}");
+			Log.Info($"Loaded plugin {type}");
 		}
 
 		public event ResolveEventHandler AssemblyResolve;
